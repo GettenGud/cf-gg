@@ -1,0 +1,26 @@
+{
+  "name": "cf-gg",
+  "version": "0.0.1-jENK",
+  "description": "Quickly load configurations from hjson files without baggage.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/sys-gg/cf-gg.git"
+  },
+  "keywords": [
+    "['configuration'",
+    "'json']"
+  ],
+  "author": "GettenGud",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://gitlab.com/sys-gg/cf-gg/issues"
+  },
+  "homepage": "https://gitlab.com/sys-gg/cf-gg#README",
+  "dependencies": {
+    "hjson": "^3.2.1"
+  }
+}
