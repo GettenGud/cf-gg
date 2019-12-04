@@ -1,0 +1,5 @@
+{
+    cfgLoader:{
+        scanFolders:[ 'config/' ]
+    }
+}
