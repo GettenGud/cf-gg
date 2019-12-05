@@ -1,9 +1,20 @@
 const Walker    = require('./util/lfwalker')
 const HJ        = require('hjson')
-
-var Config = {}
+const _         = require('lodash')
+var   Config = {}
 
 exports.global = () => {return Config}
+
+exports.ConsumeConfiguration(path, callback)
+{
+    let consumedProperty = _.get(Config, path, null)
+    
+    callback(consumedProperty)
+
+    if(consumedProperty != null)
+        del(consumedProperty)
+    
+}
 
 //Search broadly for configuration files and populate the config cache
 exports.ScanConfigs = (dir) =>
