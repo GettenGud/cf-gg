@@ -1,11 +1,11 @@
 {
   "name": "cf-gg",
-  "version": "0.0.1-jENK",
+  "version": "0.0.1-jENK-2",
   "description": "Quickly load configurations from hjson files without baggage.",
   "main": "index.js",
-
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
-
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
