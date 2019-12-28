@@ -1,49 +1,26 @@
-const Walker    = require('./util/lfwalker')
-const HJ        = require('hjson')
-const _         = require('lodash')
-var   Config = {}
+const Walker     = require('./util/lfwalker')
+const Path       = require('path')
+const readConfig = require('./util/readcon')
+const env        = require('./util/env')
 
-exports.global = () => {return Config}
+module.exports = function(options){
+    if(process.cfgg)
+        return process.cfgg
 
-exports.ConsumeConfiguration(path, callback)
-{
-    let consumedProperty = _.get(Config, path, null)
+    let configfiles
+
+    if(options && options.path)
+        configfiles = Walker.scanConfigs(options.path)
+    else
+        configfiles = Walker.scanConfigs( Path.dirname(require.main.filename) + '/config/')
     
-    callback(consumedProperty)
-
-    if(consumedProperty != null)
-        del(consumedProperty)
+        for(var file in configfiles)
+        {
+            let config = configfiles[file]
+            readConfig(config, options)
     
-}
-
-//Search broadly for configuration files and populate the config cache
-exports.ScanConfigs = (dir) =>
-{
-
-    LoadIntCfg((cfg) => {
-        Walker.GetConfigs(dir, callback => {
-            callback.forEach(element => {
-                this.ReadConfig(dir + element)
-            });
-        })
-    })
-}
-
-exports.ReadConfig = (path) =>
-{
-    let foundConfigs = HJ.parse( Walker.LoadConfig(path) )
-
-    Object.assign(Config, foundConfigs )
-}
-
-
-/** Load the configuration for the configuration tool itself.
- * 
- * @param {*} callback 
- */
-function LoadIntCfg(callback) {
-    let config = Walker.LoadConfig(__dirname + '\\config.hjson')
-    callback( HJ.parse(config) )
+        }
+    env()
 }
 
 

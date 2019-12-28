@@ -1,26 +1,34 @@
 const fs = require('fs')
-const path = require('path')
 
 
-exports.GetConfigs = function(dir, callback) {
-    let configFiles = []
-    fs.readdirSync(dir, {withFileTypes:true}).forEach(element => {
-        if(element.isDirectory && element != "dynamic")
-        {
-            walk(element.name, (result) =>{
-                configFiles.join(result)
-            })
-        }
-        else if(path.extname(element).toLowerCase() == '.hjson')
-        {
-            configFiles.push(element)
-        }
-    });
-    callback(configFiles);
-  };
-
-exports.LoadConfig = function(dir)
+//Search broadly for configuration files and populate the config cache
+exports.scanConfigs = (dir) =>
 {
-    return fs.readFileSync(path.normalize(dir), {encoding: 'utf8'});
+    let configs = scanDirectory(dir)
+
+
+    return configs
 }
 
+// Scan a folder, scan all subfolders recursively and retrieve
+// a list of configuration files.
+function scanDirectory(path){
+    let items = fs.readdirSync(path,{withFileTypes:true})
+        
+        let foundfiles = []
+
+        for(var item in items)
+        {
+            let file = items[item]
+
+            console.log(items[item].name)
+            if(file.isDirectory())
+                foundfiles = foundfiles.concat(scanDirectory(path + file.name + "/"))
+            else
+                foundfiles.push(path + file.name)
+        }
+
+        return foundfiles
+
+
+}
