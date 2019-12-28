@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/sys-gg/cf-gg.git"
+    "url": "git+ssh://git@github.com:GettenGud/cf-gg.git"
   },
   "keywords": [
     "['configuration'",
@@ -20,9 +20,9 @@
   "author": "GettenGud",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://gitlab.com/sys-gg/cf-gg/issues"
+    "url": "https://github.com/GettenGud/cf-gg/issues"
   },
-  "homepage": "https://gitlab.com/sys-gg/cf-gg#README",
+  "homepage": "https://github.com/GettenGud/cf-gg/blob/master/README.md",
   "dependencies": {
     "hjson": "^3.2.1"
   },
