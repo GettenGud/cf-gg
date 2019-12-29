@@ -1,6 +1,6 @@
 {
   "name": "cf-gg",
-  "version": "0.0.1-jENK-2",
+  "version": "0.0.1-jENK-3",
   "description": "Quickly load configurations from hjson files without baggage.",
   "main": "index.js",
   "scripts": {
