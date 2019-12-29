@@ -2,7 +2,7 @@
 
 module.exports = function(obj, prop, value) {
     if (typeof prop === "string")
-        prop = prop.split(".");
+        prop = prop.split("/");
 
     if (prop.length > 1) {
         var e = prop.shift();
@@ -12,7 +12,9 @@ module.exports = function(obj, prop, value) {
                  : {},
                prop,
                value);
-    } else
+    } else{
         obj[prop[0]] = value;
+
+    }
 }
 

@@ -10,11 +10,24 @@ module.exports = function(path, options)
     let foundConfigs = HJ.parse( fs.readFileSync(path).toString() )
 
     if(options.folderNamespaces){
-        let properPath = Path.dirname(path).slice(Path.dirname(require.main.filename).length).slice(1).split('/')
-        properPath.shift()
-        properPath.join('.')
-        assign(process.cfgg, properPath, foundConfigs)
+        let properPath = Path.dirname(path)
+                            .slice(Path.dirname(require.main.filename).length)
+                            .slice(1)
+                            .split('/')
 
+            properPath
+                .shift()
+            properPath
+                .join('/')
+        //console.log(properPath)
+        for(fileKey in foundConfigs)
+        {
+
+            let propertyPath = properPath + "/" + fileKey
+            console.log(propertyPath)
+            assign(process.cfgg, propertyPath, foundConfigs[fileKey])
+
+        }
     }
     else{
         assign(process.cfgg, foundConfigs)

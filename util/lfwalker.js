@@ -21,7 +21,7 @@ function scanDirectory(path){
         {
             let file = items[item]
 
-            console.log(items[item].name)
+            //console.log(items[item].name)
             if(file.isDirectory())
                 foundfiles = foundfiles.concat(scanDirectory(path + file.name + "/"))
             else
