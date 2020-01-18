@@ -4,12 +4,12 @@ const Path      = require('path')
 const assign    = require('./assign')
 module.exports = function(path, options)
 {
-    if( process.cfgg == null)
-        process.cfgg = {}
+    let config = {}
 
     let foundConfigs = HJ.parse( fs.readFileSync(path).toString() )
 
-    if(options.folderNamespaces){
+
+    if(options.loadToRoot == null || options.loadToRoot == false || options.folderNamespaces){
         let properPath = Path.dirname(path)
                             .slice(Path.dirname(require.main.filename).length)
                             .slice(1)
@@ -19,20 +19,20 @@ module.exports = function(path, options)
                 .shift()
             properPath
                 .join('/')
-        //console.log(properPath)
         for(fileKey in foundConfigs)
         {
 
             let propertyPath = properPath + "/" + fileKey
-            console.log(propertyPath)
-            assign(process.cfgg, propertyPath, foundConfigs[fileKey])
+            assign(config, propertyPath, foundConfigs[fileKey])
 
         }
     }
     else{
-        assign(process.cfgg, foundConfigs)
+        config = foundConfigs 
         
     }
+
+    return config
 
 }
 
