@@ -28,6 +28,7 @@ Subsequent calls of cfgg() will return the configuration object itself. You cann
 
 ### Providing Options
 The module can take arguments in the form of an options object. The following options are available:
+
 | option | type | default | behaviour |
 | ------- | ---------- | --- | -----:|
 | loadToRoot | bool | false | If true, all configs are loaded into the root object instead of being distributed into sub-objects by directory name. |
