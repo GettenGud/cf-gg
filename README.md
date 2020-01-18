@@ -30,7 +30,7 @@ Subsequent calls of cfgg() will return the configuration object itself. You cann
 The module can take arguments in the form of an options object. The following options are available:
 
 | option | type | default | behaviour |
-| ------- | :----------: | :---: | -----:|
+| ------- | :----------: | :---: |:----- |
 | loadToRoot | bool | false | If true, all configs are loaded into the root object instead of being distributed into sub-objects by directory name. |
 | path | string | `/config/` directory relative to require.main file. | Changes the path that cf-gg looks for configurations in. This is an absolute path so use __dirname to get a different sub-directory of your project. |
 | bindToProcess | bool | false | If set true your configuration object can be access globally at `process.cfgg`.
