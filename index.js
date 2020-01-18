@@ -4,6 +4,7 @@ const readConfig = require('./util/readcon')
 
 const env        = require('./util/env')
 const logg       = require('./util/logg')
+const arg        = require('./util/arg')
 
 var cfgg = null
 
@@ -41,7 +42,14 @@ module.exports = function(options){
     
         env()
         logg()
-    
+        
+        let args = arg()
+        
+        for(var argument in args)
+        {
+            cfgg[argument] = args[argument]
+        }
+
         if(options.bindToProcess)
             process.cfgg = cfgg
     

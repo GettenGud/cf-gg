@@ -1,20 +1,23 @@
 module.exports = function(){
-    for (let i = 0; i < array.length; i++) {
-        const arg = array[i];
+    let launch = {}
+    let flags = []
+    for (let i = 0; i < process.argv.length; i++) {
+        const arg = process.argv[i];
 
-        let launch = {}
-        let flags = []
 
-        let arg2Prefix = arg.substring(0,1)
+        let arg2Prefix = arg.substring(0,2)
         if( arg2Prefix == '--')
         {
-            launch[arg.substring(2,arg.length - 3)] = i + 1            
+            let argName = arg.substring(2,arg.length - 1)
+            launch[argName] = process.argv[i + 1]            
             i++;
         }
         else if(arg2Prefix[0] == '-')
         {
-            flags.push(arg.substring(1, arg.length - 2))
+            flags.push(arg.substring(1))
         }
         
     }
+
+    return {'.args':{ launch: launch, flags: flags}}
 }
