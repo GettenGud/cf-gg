@@ -8,7 +8,7 @@ module.exports = function(){
         let arg2Prefix = arg.substring(0,2)
         if( arg2Prefix == '--')
         {
-            let argName = arg.substring(2,arg.length - 1)
+            let argName = arg.substring(2,arg.length)
             launch[argName] = process.argv[i + 1]            
             i++;
         }
